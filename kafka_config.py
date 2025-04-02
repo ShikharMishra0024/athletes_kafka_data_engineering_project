@@ -3,7 +3,7 @@ from confluent_kafka import Consumer, Producer
 BROKER_URL = "broker_id:9092"
 def create_consumer(grp_id : str, client_id : str, topic : list[str]) -> Consumer:
     consumerConf = {
-    "bootstrap.servers":BROKER_URL,\
+    "bootstrap.servers":"BROKER_URL:PORT",\
     "group.id":grp_id,\
     "client.id":client_id,\
     "enable.auto.commit":True,\
@@ -14,7 +14,7 @@ def create_consumer(grp_id : str, client_id : str, topic : list[str]) -> Consume
     consumer.subscribe(topic)
     return consumer
 def create_producer(client_id:str) -> Producer:
-    conf = {"bootstrap.servers":"192.168.18.113:9092",\
+    conf = {"bootstrap.servers":"BROKER_URL:PORT",\
         "client.id":"producer-1",\
         "linger.ms":1000,\
         "batch.num.messages":100,\
